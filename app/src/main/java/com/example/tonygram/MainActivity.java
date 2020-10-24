@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         return file;
     }
 
-    private void savePost(String description, ParseUser currentUser, File photoFile) {
+    private void savePost(final String description, final ParseUser currentUser, File photoFile) {
         Post post = new Post();
         post.setDescription(description);
         post.setImage(new ParseFile(photoFile));
@@ -142,6 +142,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Error while saving!", Toast.LENGTH_SHORT).show();
                 }
                 Log.i(TAG, "Post save was successful");
+                Toast.makeText(MainActivity.this, "Successfully saved Description: " +
+                        description + " to User: " + currentUser.getUsername(), Toast.LENGTH_LONG).show();
                 etDescription.setText("");
                 ivPostImage.setImageResource(0);
             }
