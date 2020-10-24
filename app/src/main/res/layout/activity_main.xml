@@ -19,8 +19,7 @@
         android:id="@+id/btnCaptureImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Take Picture"
-        android:onClick="openCamera"/>
+        android:text="Take Picture" />
 
     <ImageView
         android:id="@+id/ivPostImage"
@@ -33,5 +32,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="250dp"
+        android:onClick="logout"
+        android:text="Logout" />
 
 </LinearLayout>
