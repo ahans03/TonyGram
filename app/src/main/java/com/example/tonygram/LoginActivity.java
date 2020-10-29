@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void createUser(String username, String password) {
+    private void createUser(final String username, final String password) {
         Log.i(TAG, "Attempting to create new user " + username);
         // Create the ParseUser
         ParseUser user = new ParseUser();
@@ -72,12 +72,12 @@ public class LoginActivity extends AppCompatActivity {
 // Invoke signUpInBackground
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
-                if (e != null){
+                if (e == null) {
+                    loginUser(username, password);
+                }else{
                     Log.e(TAG, "Issue with creating user", e);
                     Toast.makeText(LoginActivity.this, "Issue with Creating New User", Toast.LENGTH_SHORT).show();
-                    return;
                 }
-
             }
         });
         loginUser(username, password);
@@ -93,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Issue with login credentials", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                // TODO: navigate to the main activity if the user has signed in properly
                 goMainActivity();
                 Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
             }
